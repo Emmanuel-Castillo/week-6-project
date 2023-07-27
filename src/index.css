@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
 
+.App {
+  height: fit-content;
+  padding: 24px   ;
+  background-image: url("./assets/background.jpg");
+  background-position: center;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -46,12 +53,6 @@ button {
 }
 
 /* landing  */
-.App {
-  height: fit-content;
-  padding: 24px   ;
-  background-image: url("./assets/background.jpg");
-  background-position: center;
-}
 
 #nav__logo--img,
 #footer__logo--img {
@@ -88,6 +89,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 24px;
 }
 
 .header__title {
@@ -141,13 +143,43 @@ header {
   color: darkgoldenrod;
 }
 
+.body {
+  background-color: rgba(36, 36, 36, .8);
+  height: 50vh;
+  width: 75vw;
+  margin: 0 auto;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-spinner {
+  height: 128px;
+  width: 128px;
+  color: darkgoldenrod;
+  animation: rotate 600ms infinite linear;
+  display: none;
+}
+
+@keyframes rotate {
+  0% {
+    rotate: 0;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
 /* Content */
 
 #content,
 footer {
-  /* height: 200vh; */
-  background-color: #242424;
+  background-color: rgba(36, 36, 36, .8);
   height: fit-content;
+  width: 75vw;
+  margin: 0 auto;
+  border-radius: 16px;
 }
 
 .content__header {
@@ -198,21 +230,6 @@ footer {
   color: white;
   font-size: 32px;
   text-align: center;
-}
-
-
-
-.fa-spinner {
-  animation: rotate 600ms infinite linear;
-}
-
-@keyframes rotate {
-  0% {
-    rotate: 0;
-  }
-  100% {
-    rotate: 360deg;
-  }
 }
 
 .movie {
@@ -309,6 +326,7 @@ footer {
   text-align: center;
 }
 
+
 /* SMALL PHONE TABLETS AND LARGE SMARTPHONES  */
 @media (max-width: 768px) {
 
@@ -377,4 +395,11 @@ footer {
   .copyright {
     font-size: 12px;
   }
+
+  .fa-spinner {
+    height: 64px;
+    width: 64px;
+  }
+
+
 }

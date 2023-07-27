@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/logo.png";
+import {Link} from 'react-router-dom'
 
 export const Footer = () => {
   return (
@@ -10,19 +11,13 @@ export const Footer = () => {
             <img src={logo} alt="" id="footer__logo--img" />
             <ul className="footer__links">
               <li className="footer__link">
-                <a href="" className="footer__link--anchor">
-                  Home
-                </a>
+              <Link to={'/'} className="footer__link--anchor">Home</Link>
               </li>
               <li className="footer__link">
-                <a href="" className="footer__link--anchor">
-                  Find your Movie
-                </a>
+              <Link to={'/'} className="footer__link--anchor">Find your Movie</Link>
               </li>
               <li className="footer__link">
-                <a href="" className="footer__link--anchor">
-                  Contact
-                </a>
+              <Link to={'/'} className="footer__link--anchor">Contact</Link>
               </li>
             </ul>
             <p className="copyright">Copyright &copy; 2023 Emmanuel Castillo</p>

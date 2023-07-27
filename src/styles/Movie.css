@@ -1,0 +1,55 @@
+/* MOVIE INFO PAGE */
+.movie__info--page {
+  background-color: rgba(36, 36, 36, 0.8);
+  height: fit-content;
+  color: white;
+  padding: 16px;
+  width: 75vw;
+  margin: 0 auto;
+  border-radius: 16px;
+}
+
+.movie__info--container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie__poster--wrapper {
+  padding: 16px;
+}
+
+.movie__poster--img {
+  border: 2px solid darkgoldenrod;
+  border-radius: 16px;
+}
+
+.movie__info--description {
+  padding: 16px;
+}
+
+.movie__info--title {
+  text-align: center;
+  color: darkgoldenrod;
+}
+
+.fa-arrow-left {
+  color: white;
+  transition: all 300ms ease;
+}
+
+.fa-arrow-left:hover {
+  color: darkgoldenrod;
+  transform: scale(1.3);
+}
+
+.movie__info--para {
+  margin: 8px 0;
+}
+
+.darkgold {
+  font-weight: bold;
+  color: darkgoldenrod;
+}

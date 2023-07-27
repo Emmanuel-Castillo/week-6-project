@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.png'
+import {Link} from 'react-router-dom'
 
 export const Nav = () => {
   return (
@@ -9,13 +10,13 @@ export const Nav = () => {
       </figure>
       <ul className="nav__link--list">
         <li className="nav__link">
-          <a href="" className="nav__link--anchor">Home</a>
+          <Link to={'/'} className="nav__link--anchor">Home</Link>
         </li>
         <li className="nav__link">
-          <a href="" className="nav__link--anchor">Find your Movie</a>
+          <Link to={'/'} className="nav__link--anchor">Find Your Movie</Link>
         </li>
         <li className="nav__link">
-          <a href="" className="nav__link--anchor">Contact</a>
+          <Link to={'/'} className="nav__link--anchor">Contact</Link>
         </li>
       </ul>
     </nav>
