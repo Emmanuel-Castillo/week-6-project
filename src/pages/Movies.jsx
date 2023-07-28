@@ -1,26 +1,36 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from "react";
 import axios from "axios";
-import {useParams, useNavigate} from 'react-router-dom'
-
+import { useParams, useNavigate } from "react-router-dom";
+import img__skeleton from '../assets/skeleton__img--template.jpg'
 
 export default function Movies() {
-  const [movies, setMovies] = useState([])
-  const {search} = useParams()
-  const navigate = useNavigate()
-  const movieListEl = document.querySelector('.movie__list')
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState();
+  const { search } = useParams();
+  const navigate = useNavigate();
 
-  async function fetchMovies(){
-    const {data} = await axios.get(`https://www.omdbapi.com/?apikey=49913df9&s=${search}`)
-    setMovies(data.Search)
+  async function fetchMovies() {
+    const { data } = await axios.get(
+      `https://www.omdbapi.com/?apikey=49913df9&s=${search}`
+    );
+    setMovies(data.Search);
+    setLoading(false);
   }
 
   useEffect(() => {
-    fetchMovies()
-  },[])
+    setLoading(true);
+    setTimeout(() => {
+      fetchMovies();
+    }, 500);
+  }, []);
 
   function movieHTML(movie) {
     return (
-      <div className="movie" key={movie.imdbID} onClick={() => navigate(`${movie.imdbID}`)}>
+      <div
+        className="movie"
+        key={movie.imdbID}
+        onClick={() => navigate(`${movie.imdbID}`)}
+      >
         <div className="movie__img--wrapper">
           <img
             src={movie.Poster}
@@ -50,7 +60,7 @@ export default function Movies() {
         setMovies(filteredList.reverse());
       }
 
-      console.log(movies)
+      console.log(movies);
     }
   }
 
@@ -58,6 +68,24 @@ export default function Movies() {
     let filter = event.target.value;
 
     moviesFilter(filter);
+  }
+
+  function renderSkeleton(index) {
+    return (
+      <div className="movie__skeleton" key={index}>
+        <div className="movie__wrapper--skeleton">
+        <img
+            src={img__skeleton}
+            alt="Movie Poster Not Available!"
+            className="movie__img--skeleton"
+          />
+        </div>
+        <div className="movie__description--skeleton">
+          <p className="movie__title--skeleton">aaaaaaaa</p>
+          <p className="movie__year--skeleton">2001</p>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -79,7 +107,9 @@ export default function Movies() {
             </select>
           </div>
           <div className="movie__list">
-            {movies.map((movie) => movieHTML(movie))}
+            {loading
+              ? new Array(10).fill(0).map((_,index) => renderSkeleton(index))
+              : movies.map((movie) => movieHTML(movie))}
           </div>
         </div>
       </div>

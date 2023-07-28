@@ -159,7 +159,6 @@ header {
   width: 128px;
   color: darkgoldenrod;
   animation: rotate 600ms infinite linear;
-  display: none;
 }
 
 @keyframes rotate {
@@ -261,6 +260,7 @@ footer {
   border: 1px solid white;
   color: white;
   transition: all 300ms ease;
+  image-rendering: optimizeQuality;
 }
 
 .movie__title, .movie__year {
@@ -276,6 +276,33 @@ footer {
 
 .movie__year {
   font-size: 12px;
+}
+
+/* movie skeleton */
+
+.movie__skeleton {
+  width: 25%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie__img--skeleton {
+  width: 100%;
+}
+
+.movie__description--skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie__title--skeleton,
+.movie__year--skeleton {
+  margin: 8px 0;
+  height: 16px;
+  background-color: gray;
+  color: gray;
 }
 
 /* footer */
@@ -339,13 +366,16 @@ footer {
     font-size: 16px;
   }
 
-  .movie{
+  .movie,
+  .movie__skeleton{
     width: 40%;
   }
 
-  .movie__title {
+  .movie__title,
+  .movie__title--skeleton {
     font-size: 16px;
   }
+
 
   .footer__links {
     flex-direction: column;
@@ -374,7 +404,8 @@ footer {
     text-align: center;
   }
 
-  .movie {
+  .movie,
+  .movie__skeleton {
     width: 100%;
     max-width: 320px;
   }
