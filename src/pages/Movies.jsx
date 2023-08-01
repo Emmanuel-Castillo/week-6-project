@@ -11,15 +11,19 @@ export default function Movies() {
 
   // TODO: Fix API KEY
   async function fetchMovies() {
+    setLoading(true);
     const { data } = await axios.get(
       `https://www.omdbapi.com/?apikey=49913df9&s=${search}`
     );
-    setMovies(data.Search);
-    setLoading(false);
+    
+    if(!data.Error) {
+      setMovies(data.Search);
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
-    setLoading(true);
+    
     setTimeout(() => {
       fetchMovies();
     }, 100);

@@ -34,9 +34,9 @@ export default function Home() {
           </button>
         </form>
       </header>
-      <body className="body">
+      <div className="body">
         {loading ? <FontAwesomeIcon icon="fa-solid fa-spinner" />: <></>}
-      </body>
+      </div>
     </>
   );
 }
