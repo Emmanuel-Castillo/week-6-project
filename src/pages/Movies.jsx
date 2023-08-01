@@ -9,6 +9,7 @@ export default function Movies() {
   const { search } = useParams();
   const navigate = useNavigate();
 
+  // TODO: Fix API KEY
   async function fetchMovies() {
     const { data } = await axios.get(
       `https://www.omdbapi.com/?apikey=49913df9&s=${search}`
@@ -21,7 +22,7 @@ export default function Movies() {
     setLoading(true);
     setTimeout(() => {
       fetchMovies();
-    }, 500);
+    }, 300);
   }, []);
 
   function movieHTML(movie) {
