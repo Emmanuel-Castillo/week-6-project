@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import img__skeleton from '../assets/skeleton__img--template.jpg'
 
 export default function Movies({setNotFound}) {
+  const API_KEY = process.env.NEXT_PUBLIC_API_KEY
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState();
   const [page, setPage] = useState(1)
@@ -14,7 +15,7 @@ export default function Movies({setNotFound}) {
   async function fetchMovies() {
     setLoading(true);
     const { data } = await axios.get(
-      `https://www.omdbapi.com/?apikey=49913df9&s=${search}`
+      `https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`
     );
     
     if(data.Error) {
@@ -30,7 +31,7 @@ export default function Movies({setNotFound}) {
 
   async function changePage(){
     setLoading(true)
-    const {data} = await axios.get(`http://www.omdbapi.com/?apikey=49913df9&s=${search}&page=${page}`)
+    const {data} = await axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${search}&page=${page}`)
     setMovies(data.Search)
     setLoading(false)
   }
