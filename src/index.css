@@ -286,6 +286,41 @@ footer {
   font-size: 12px;
 }
 
+/* page counter */
+
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.minus,
+.plus {
+  font-size: 24px;
+  border: 2px solid white;
+  padding: 8px 16px;
+  margin: 0 4px;
+  color: white;
+  transition: all 300ms ease;
+}
+
+.minus:hover,
+.plus:hover {
+  border-color: darkgoldenrod;
+  color: darkgoldenrod;
+}
+
+.pageNumber {
+  font-size: 32px;
+  color: darkgoldenrod;
+  margin: 0 4px;
+}
 /* movie skeleton */
 
 .movie__skeleton {

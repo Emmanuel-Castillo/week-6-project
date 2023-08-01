@@ -6,6 +6,7 @@ import img__skeleton from '../assets/skeleton__img--template.jpg'
 export default function Movies({setNotFound}) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState();
+  const [page, setPage] = useState(1)
   const { search } = useParams();
   const navigate = useNavigate();
 
@@ -27,12 +28,22 @@ export default function Movies({setNotFound}) {
     }
   }
 
+  async function changePage(){
+    setLoading(true)
+    const {data} = await axios.get(`http://www.omdbapi.com/?apikey=49913df9&s=${search}&page=${page}`)
+    setMovies(data.Search)
+    setLoading(false)
+  }
+
   useEffect(() => {
-    
     setTimeout(() => {
       fetchMovies();
     }, 100);
   }, []);
+
+  useEffect(() => {
+    changePage()
+  }, [page])
 
   function movieHTML(movie) {
     return (
@@ -112,6 +123,20 @@ export default function Movies({setNotFound}) {
             {loading
               ? new Array(10).fill(0).map((_,index) => renderSkeleton(index))
               : movies.map((movie) => movieHTML(movie))}
+          </div>
+          
+          <div className="counter">
+            <button className="minus" onClick={() => {
+              setPage(prevPage => {
+                if(prevPage === 1) return 1;
+                return prevPage - 1})
+            }}>-</button>
+            <p className="pageNumber">{page}</p>
+            <button className="plus" onClick={() => {
+              setPage(prevPage => 
+                {if(prevPage === 100) return 100;
+                return prevPage + 1})
+            }}>+</button>
           </div>
         </div>
       </div>
