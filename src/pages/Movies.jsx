@@ -22,7 +22,7 @@ export default function Movies() {
     setLoading(true);
     setTimeout(() => {
       fetchMovies();
-    }, 300);
+    }, 100);
   }, []);
 
   function movieHTML(movie) {
@@ -49,27 +49,19 @@ export default function Movies() {
 
   function moviesFilter(filter) {
     if (filter) {
-      const filteredList = movies.sort((a, b) => {
-        if (a.Year > b.Year) return 1;
-        if (b.Year > a.Year) return -1;
+      const sortedMovies = [...movies].sort((a, b) => {
+        if (filter === "Old to New") {
+          return a.Year - b.Year;
+        } else if (filter === "New to Old") {
+          return b.Year - a.Year;
+        }
         return 0;
       });
-
-      if (filter === "Old to New") {
-        setMovies(filteredList);
-      } else {
-        setMovies(filteredList.reverse());
-      }
-
-      console.log(movies);
+  
+      setMovies(sortedMovies);
     }
   }
-
-  function filterMovie(event) {
-    let filter = event.target.value;
-
-    moviesFilter(filter);
-  }
+  
 
   function renderSkeleton(index) {
     return (
@@ -98,7 +90,7 @@ export default function Movies() {
             <select
               className="filter__movie"
               id="filter"
-              onChange={(event) => filterMovie(event)}
+              onChange={(event) => moviesFilter(event.target.value)}
             >
               <option value disabled>
                 Sort by..

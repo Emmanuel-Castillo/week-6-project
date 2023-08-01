@@ -300,8 +300,8 @@ footer {
 .movie__title--skeleton,
 .movie__year--skeleton {
   margin: 8px 0;
-  height: 16px;
-  background-color: gray;
+  height: fit-content;
+  background: gray;
   color: gray;
 }
 
@@ -385,6 +385,15 @@ footer {
     margin: 8px 0;
   }
 
+  .movie__info--container {
+    flex-direction: column;
+  }
+
+  .movie__img--page {
+    width: 100%;
+  }
+
+
 }
 
 /* Very small screens */
@@ -430,6 +439,13 @@ footer {
   .fa-spinner {
     height: 64px;
     width: 64px;
+  }
+
+  .movie__info--title {
+    font-size: 24px;
+  }
+  .movie__info--para {
+    font-size: 12px;
   }
 
 
