@@ -72,6 +72,7 @@ button {
   padding: 8px 16px;
   border: 2px solid white;
   transition: all 300ms ease;
+  cursor: pointer;
 }
 
 .nav__link:hover {
@@ -168,6 +169,13 @@ header {
   100% {
     rotate: 360deg;
   }
+}
+
+.not--found {
+  margin-top: 8px;
+  color: white;
+  text-align: center;
+  padding: 4px;
 }
 
 /* Content */

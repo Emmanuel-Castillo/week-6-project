@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Home() {
+export default function Home({notFound, setNotFound}) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false)
 
   function loadNextPage(event) {
     event.preventDefault()
+    setNotFound(false)
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
@@ -36,6 +37,9 @@ export default function Home() {
       </header>
       <div className="body">
         {loading ? <FontAwesomeIcon icon="fa-solid fa-spinner" />: <></>}
+        {notFound ? 
+        <h1 className="not--found">Not Found...</h1>
+         : <></>}
       </div>
     </>
   );

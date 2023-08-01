@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import img__skeleton from '../assets/skeleton__img--template.jpg'
 
-export default function Movies() {
+export default function Movies({setNotFound}) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState();
   const { search } = useParams();
@@ -16,9 +16,14 @@ export default function Movies() {
       `https://www.omdbapi.com/?apikey=49913df9&s=${search}`
     );
     
-    if(!data.Error) {
+    if(data.Error) {
+      navigate("/")
+      setNotFound(true)
+    }
+    else{
       setMovies(data.Search);
       setLoading(false);
+
     }
   }
 
