@@ -13,7 +13,7 @@ export default function Movie() {
   async function fetchMovie() {
     setLoading(true);
     const { data } = await axios.get(
-      `http://www.omdbapi.com/?apikey=49913df9&i=${id}`
+      `https://www.omdbapi.com/?apikey=49913df9&i=${id}`
     );
     setMovie(data);
     setLoading(false);
