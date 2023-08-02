@@ -30,7 +30,7 @@ export default function Movies({setNotFound}) {
 
   async function changePage(){
     setLoading(true)
-    const {data} = await axios.get(`http://www.omdbapi.com/?apikey=49913df9&s=${search}&page=${page}`)
+    const {data} = await axios.get(`https://www.omdbapi.com/?apikey=49913df9&s=${search}&page=${page}`)
     setMovies(data.Search)
     setLoading(false)
   }
